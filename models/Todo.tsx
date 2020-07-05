@@ -1,4 +1,4 @@
-export default interface Todo {
+export interface Todo {
   _id: string;
   description: string;
   done: boolean;
