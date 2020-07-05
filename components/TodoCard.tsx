@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
 
 import moment from 'moment';
 
@@ -12,14 +13,27 @@ export interface TodoCardProps {
 export default (params: TodoCardProps) => {
   const { todo } = params;
 
+  const onChangeDone = (value: boolean) => {
+    console.log('change done', value);
+  };
+
   return (
     <View key={todo._id} style={styles.container}>
-      <Text style={styles.description}>
-        {todo.description}
-      </Text>
-      <Text style={styles.createdAt}>
-        Created at: {moment(todo.createdAt).format('YYYY-MM-DD')}
-      </Text>
+      <View>
+        <CheckBox
+          disabled={false}
+          value={todo.done}
+          onChange={() => onChangeDone(todo.done)}
+        />
+      </View>
+      <View>
+        <Text style={styles.description}>
+          {todo.description}
+        </Text>
+        <Text style={styles.createdAt}>
+          Created at: {moment(todo.createdAt).format('YYYY-MM-DD')}
+        </Text>
+      </View>
     </View>
   );
 }
@@ -30,14 +44,15 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 6,
     borderWidth: 1,
-    height: 60,
+    flexDirection: 'row',
     marginBottom: 5,
-    padding: 5
+    paddingHorizontal: 5,
+    paddingVertical: 10
   },
   description: {
-    fontSize: 16
+    fontSize: 20
   },
   createdAt: {
-    fontSize: 10
+    fontSize: 11
   }
 });
