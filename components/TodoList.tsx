@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-import { Todo } from '../models/Todo';
+import Todo from '../models/Todo';
 import TodoService from '../services/TodoService';
 import TodoCard from './TodoCard';
 

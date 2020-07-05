@@ -1,14 +1,17 @@
 import axios from 'axios';
 
-import Todo from '../models/Todo';
-
-export default abstract class RepositoryService {
+export default abstract class RepositoryService<T> {
 
   protected readonly abstract baseUrl: string;
   protected readonly abstract endpointUrl: string;
 
-  async list(): Promise<Todo[]> {
-    return axios.get<Todo[]>(this.getResourceBaseUrl())
+  async list(): Promise<T[]> {
+    return axios.get<T[]>(this.getResourceBaseUrl())
+      .then(response => response.data);
+  }
+
+  async update(_id: string, todo: T): Promise<T> {
+    return axios.put<T>(`${this.getResourceBaseUrl()}/${_id}`, todo)
       .then(response => response.data);
   }
 
