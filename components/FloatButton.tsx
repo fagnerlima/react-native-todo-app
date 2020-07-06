@@ -4,11 +4,14 @@ import { Icon } from 'react-native-elements';
 
 export interface FloatButtonProps {
   iconName: string;
+  onPress: () => void;
 }
 
 export default (props: FloatButtonProps) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+        style={styles.container}
+        onPress={props.onPress}>
       <Icon name={props.iconName} size={30} color="#01a699" />
     </TouchableOpacity>
   );

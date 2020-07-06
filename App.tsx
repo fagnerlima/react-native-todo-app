@@ -1,6 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
-import TodoList from './components/TodoList';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default () => <TodoList />;
+import TodoAdd from './screens/TodoAdd';
+import TodoList from './screens/TodoList';
+
+const Stack = createStackNavigator();
+
+export default () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="TodoList">
+        <Stack.Screen name="TodoList" component={TodoList}
+          options={{
+            title: 'ToDo List'
+          }} />
+        <Stack.Screen name="TodoAdd" component={TodoAdd}
+          options={{
+            title: 'ToDo'
+          }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
