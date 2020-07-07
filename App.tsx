@@ -14,7 +14,7 @@ export default () => {
       <Stack.Navigator initialRouteName="TodoList">
         <Stack.Screen name="TodoList" component={TodoList}
           options={{
-            title: 'ToDo List'
+            title: 'ToDo\'s'
           }} />
         <Stack.Screen name="TodoAdd" component={TodoAdd}
           options={{

@@ -10,6 +10,11 @@ export default abstract class RepositoryService<T> {
       .then(response => response.data);
   }
 
+  async save(todo: T): Promise<T> {
+    return axios.post<T>(this.getResourceBaseUrl(), todo)
+      .then(response => response.data);
+  }
+
   async update(_id: string, todo: T): Promise<T> {
     return axios.put<T>(`${this.getResourceBaseUrl()}/${_id}`, todo)
       .then(response => response.data);
