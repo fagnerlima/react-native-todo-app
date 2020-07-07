@@ -12,7 +12,9 @@ export interface TodoAddProps extends FormikProps<Todo> {
 
 const TodoForm = (props: TodoAddProps) => {
   const todo = props.values;
-  const { touched, errors, isSubmitting, message, handleSubmit } = props;
+  const { touched, errors, isSubmitting, handleSubmit } = props;
+
+  const submit = () => handleSubmit();
 
   return (
     <View style={styles.container}>
@@ -25,7 +27,7 @@ const TodoForm = (props: TodoAddProps) => {
       {touched.description && errors.description && <Text style={styles.error}>{errors.description}</Text>}
       <Button
         title="Save"
-        onPress={handleSubmit}
+        onPress={submit}
         disabled={isSubmitting}
       />
     </View>
@@ -33,7 +35,6 @@ const TodoForm = (props: TodoAddProps) => {
 }
 
 interface TodoFormProps {
-  message?: string;
 }
 
 const todoService = new TodoService();
