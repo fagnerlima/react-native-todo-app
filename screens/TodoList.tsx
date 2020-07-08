@@ -21,8 +21,10 @@ export default (props: TodoListProps) => {
       .then(data => setTodos(data));
   });
 
+  const deleteTodo = () => setTodos([]);
+
   const renderCards = () => {
-    return todos.map((todo, index) => <TodoCard todo={todo} key={index} />);
+    return todos.map((todo, index) => <TodoCard todo={todo} key={index} onDelete={(deleteTodo)} />);
   }
 
   return (

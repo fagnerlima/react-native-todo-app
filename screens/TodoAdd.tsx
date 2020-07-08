@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Button, Text } from 'react-native';
+import { View, StyleSheet, TextInput, Button, Text, Alert } from 'react-native';
 
 import { withFormik, FormikProps, FormikErrors } from 'formik';
 
@@ -59,7 +59,7 @@ export default withFormik<TodoFormProps, Todo>({
     todoService.save(todo)
       .then(() => {
         todo.description = '';
-        alert('ToDo added successfully');
+        Alert.alert('', 'ToDo added successfully');
       })
       .finally(() => setSubmitting(false));
   }

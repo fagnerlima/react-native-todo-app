@@ -20,6 +20,11 @@ export default abstract class RepositoryService<T> {
       .then(response => response.data);
   }
 
+  async delete(_id: string): Promise<void> {
+    return axios.delete<void>(`${this.getResourceBaseUrl()}/${_id}`)
+      .then(response => response.data);
+  }
+
   getResourceBaseUrl(): string {
     return this.baseUrl + this.endpointUrl;
   }
