@@ -63,11 +63,11 @@ export default (params: TodoCardProps) => {
         </Text>
       </View>
       <View style={styles.flexSpacer}></View>
-      <View>
+      {/* <View>
         <TouchableOpacity onPress={deleteTodo}>
           <Icon name="delete" size={45} color="#c33" />
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }
