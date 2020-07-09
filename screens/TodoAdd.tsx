@@ -7,7 +7,6 @@ import Todo from '../models/Todo';
 import TodoService from '../services/TodoService';
 
 export interface TodoAddProps extends FormikProps<Todo> {
-  message?: string;
 }
 
 const TodoForm = (props: TodoAddProps) => {
@@ -57,10 +56,7 @@ export default withFormik<TodoFormProps, Todo>({
 
   handleSubmit: (todo, { setSubmitting }) => {
     todoService.save(todo)
-      .then(() => {
-        todo.description = '';
-        Alert.alert('', 'ToDo added successfully');
-      })
+      .then(() => todo.description = '')
       .finally(() => setSubmitting(false));
   }
 })(TodoForm);
