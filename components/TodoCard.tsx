@@ -7,7 +7,6 @@ import moment from 'moment';
 
 import Todo from '../models/Todo';
 import TodoService from '../services/TodoService';
-import TodoAdd from '../screens/TodoAdd';
 
 export interface TodoCardProps {
   todo: Todo;
@@ -55,7 +54,7 @@ export default (params: TodoCardProps) => {
           onChange={onChangeDone}
         />
       </View>
-      <View>
+      <View style={styles.textContainer}>
         <Text style={styles.description}>
           {todo.description}
         </Text>
@@ -63,12 +62,12 @@ export default (params: TodoCardProps) => {
           Created at: {moment(todo.createdAt).format('YYYY-MM-DD')}
         </Text>
       </View>
-      {/* <View style={styles.flexSpacer}></View>
+      <View style={styles.flexSpacer}></View>
       <View>
         <TouchableOpacity onPress={deleteTodo}>
           <Icon name="delete" size={45} color="#c33" />
         </TouchableOpacity>
-      </View> */}
+      </View>
     </View>
   );
 }
@@ -81,10 +80,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flexDirection: 'row',
     flexGrow: 1,
-    // justifyContent: 'space-between',
+    justifyContent: 'space-between',
     marginBottom: 5,
     paddingHorizontal: 5,
     paddingVertical: 10
+  },
+  textContainer: {
+    flexShrink: 1
   },
   flexSpacer: {
     flexGrow: 1

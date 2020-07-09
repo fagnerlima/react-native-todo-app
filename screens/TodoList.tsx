@@ -19,7 +19,7 @@ export default (props: TodoListProps) => {
   useEffect(() => {
     todoService.list()
       .then(data => setTodos(data));
-  });
+  }, [todos]);
 
   const deleteTodo = () => setTodos([]);
 
